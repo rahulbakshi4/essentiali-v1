@@ -1,51 +1,48 @@
-.App {
-  text-align: center;
+@import url('https://minimali-ui.vercel.app/css/components.css');
+:root {
+  --clr-brown: 155, 122, 80;
+  --clr-cream: #ffe4c6;
+  --clr-linen: #fff4e8;
+  --clr-bg: #fbf5f3;
+  --clr-yellow-tint: ##f5f0e1;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* reset CSS*/
+* {
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body,h1,h2,h3,h4,figure,picture,p {
+  margin: 0;
 }
-
-.App-header {
-  background-color: #22201c;
+h1,h2,h3,h4,p {
+  font-weight: 400;
+}
+body {
+  background-color: var(--clr-linen);
+  line-height: 1.5;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+  margin-inline: auto;
+  font-family: "Roboto", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
+.ff-title {
+  font-family: "Pacifico", cursive;
+}
+.ff-title a{
+  text-decoration: none;
 }
 
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.bg-brown {
+  background-color: rgb(var(--clr-brown)) !important;
 }
