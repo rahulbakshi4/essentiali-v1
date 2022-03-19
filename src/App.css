@@ -1,4 +1,8 @@
 @import url('https://minimali-ui.vercel.app/css/components.css');
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 :root {
   --clr-brown: 155, 122, 80;
   --clr-cream: #ffe4c6;
@@ -44,5 +48,20 @@ select {
 }
 
 .bg-brown {
-  background-color: rgb(var(--clr-brown)) !important;
+  background-color: rgb(var(--clr-brown));
+}
+.text-brown{
+ color: rgb(var(--clr-brown));
+}
+
+.home-titles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgb(var(--clr-brown));
+  border-radius: 8px;
+  max-width: 20rem;
+  margin-inline: auto;
+  margin-top: 2rem;
+  text-transform: uppercase;
 }
