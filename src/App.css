@@ -48,7 +48,7 @@ select {
 }
 
 .bg-brown {
-  background-color: rgb(var(--clr-brown)) !important;
+  background-color: rgb(var(--clr-brown));
 }
 .text-brown{
  color: rgb(var(--clr-brown));
