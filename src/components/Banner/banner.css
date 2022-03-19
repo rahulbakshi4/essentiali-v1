@@ -1,0 +1,14 @@
+.home-banner {
+    display: flex;
+    justify-content: center;
+    max-width: 30rem;
+    margin-inline: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+@media (min-width: 768px) {
+.banner-img {
+    max-width: 80vw;
+}
+}
