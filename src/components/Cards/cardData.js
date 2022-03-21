@@ -2,21 +2,21 @@ import { v4 as uuid } from "uuid";
 const homeProducts = [
     {
         id: uuid(),
-        name: "Harvest Atta Bread",
+        title: "Harvest Atta Bread",
         price: 40,
-        img: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764518/bread_lue7ny.webp'
+        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764518/bread_lue7ny.webp'
     },
     {
         id: uuid(),
-        name: "Kissan Fruit Jam",
+        title: "Kissan Fruit Jam",
         price: 80,
-        img: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764719/111643a_oddiix.jpg'
+        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764719/111643a_oddiix.jpg'
     },
     {
         id: uuid(),
-        name: "Nestle Maggie",
+        title: "Nestle Maggie",
         price: 60,
-        img: 'https://res.cloudinary.com/rahulb4/image/upload/v1634765779/169812a_ns9v0s.jpg'
+        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634765779/169812a_ns9v0s.jpg'
     },
 ]
 

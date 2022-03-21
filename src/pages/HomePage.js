@@ -1,11 +1,11 @@
 import { ProductCard, HorizontalCard, CategoryCard } from "../components/Cards/Card"
-import { Navbar } from "../components/Navbar/Navbar"
+
 import { Banner } from "../components/Banner/Banner"
 import { homeProducts, homeOffers, categoryProducts } from "../components/Cards/cardData"
-const HomePage = () => {
+export const HomePage = () => {
     return (
         <div>
-            <Navbar />
+
             <Banner />
             <div className="home-titles">
                 <h3 className="text-center text-brown text-xl fw-bold">
@@ -15,8 +15,8 @@ const HomePage = () => {
 
             <div className="home-cards">
                 {
-                    homeProducts.map((product) => {
-                        return <ProductCard key={product.id} name={product.name} price={product.price} img={product.img} />
+                    homeProducts.map(({ title, price, id, imageURL }) => {
+                        return <ProductCard key={id} title={title} price={price} imageURL={imageURL} />
                     })
                 }
             </div>
@@ -49,4 +49,3 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
