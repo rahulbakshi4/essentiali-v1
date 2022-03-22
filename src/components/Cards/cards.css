@@ -7,6 +7,12 @@
   .h-card {
     padding: 0.5rem !important;
   }
+  .icon-div{
+    color: var(--clr-gray-light);
+  }
+  .icon-div:hover{
+    color: rgb(var(--clr-brown));
+  }
   .home-cards {
     display: flex;
     justify-content: center;

@@ -1,9 +1,10 @@
 import './navbar.css'
+import { Link } from 'react-router-dom'
 export const Navbar = () => {
     return (
         <nav className="bg-brown navbar text-white">
             <div>
-                <p className="text-2xl ff-title"><a href="./index.html" className="text-white">essentiali.</a></p>
+                <p className="text-2xl ff-title"><Link to='/' className="text-white">essentiali.</Link></p>
             </div>
             <input className="nav-input" type="text" name="search" placeholder="Search" />
             <ul className="nav-options ">

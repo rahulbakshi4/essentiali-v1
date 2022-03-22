@@ -65,3 +65,7 @@ select {
   margin-top: 2rem;
   text-transform: uppercase;
 }
+.main-container {
+  display: flex;
+  padding: 1rem;
+}

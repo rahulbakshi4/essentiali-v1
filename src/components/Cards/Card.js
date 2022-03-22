@@ -1,20 +1,20 @@
 import "./cards.css"
 
-const ProductCard = ({ name, price, img }) => {
+const ProductCard = ({ title, price, imageURL }) => {
     return (
         <div className="ecom-card">
             <div className="product-div">
                 <img className="product-img"
-                    src={img}
+                    src={imageURL}
                     alt="product image" />
                 <div className="icon-div">
-                    <span className="material-icons">favorite_border</span>
+                    <span className="material-icons">favorite</span>
                 </div>
             </div>
             <div className="product-details">
                 <div>
                     <p className="product-name text-brown fw-semibold">
-                        {name}
+                        {title}
                     </p>
                     <p className="product-price text-brown">&#8377;{price}</p>
                 </div>
