@@ -1,0 +1,10 @@
+export const HIGH_TO_LOW = 'HIGH_TO_LOW'
+export const LOW_TO_HIGH = "LOW_TO_HIGH"
+export const CLEAR = "CLEAR"
+export const BREADS = "BREADS"
+export const COFFEE = "COFFEE"
+export const CHOCOLATES = "CHOCOLATES"
+export const PASTA_AND_NOODLES = "PASTA_AND_NOODLES"
+export const SPREADS_AND_JAM = "SPREADS_AND_JAM"
+export const PRICE_CHANGE = "PRICE_CHANGE"
+export const RATING = "RATING"

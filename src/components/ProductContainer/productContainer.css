@@ -1,7 +1,16 @@
 .product-list{
     flex-grow: 1;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 2rem;
 }
+.product-list > .ecom-card{
+    margin: .25rem ;
+}
+
+@media (max-width: 768px) {
+    .product-list{
+        justify-content: center;
+    }
+    }
