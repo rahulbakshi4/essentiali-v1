@@ -15,8 +15,8 @@ export const HomePage = () => {
 
             <div className="home-cards">
                 {
-                    homeProducts.map(({ title, price, id, imageURL }) => {
-                        return <ProductCard key={id} title={title} price={price} imageURL={imageURL} />
+                    homeProducts.map(({ title, price, id, imageURL, rating }) => {
+                        return <ProductCard key={id} title={title} price={price} imageURL={imageURL} rating={rating} />
                     })
                 }
             </div>

@@ -1,6 +1,17 @@
 import './navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/auth-context'
 export const Navbar = () => {
+    const { auth, setAuth } = useAuth()
+    const navigate = useNavigate()
+    const logoutHandler = () => {
+        setAuth({ token: '', isAuthenticated: false })
+        localStorage.removeItem('token')
+        localStorage.removeItem('isAuthenticated')
+        localStorage.removeItem('userName')
+        navigate("/login")
+    }
+
     return (
         <nav className="bg-brown navbar text-white">
             <div>
@@ -18,8 +29,15 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-icons">
                     <span className="material-icons">person</span>
-                    <span> <a href="" className="text-white">Log In</a></span>
+                    <span>
+                        {auth.isAuthenticated ? localStorage.getItem("userName") : <Link to="/login" className="text-white">Log In</Link>}
+                    </span>
                 </li>
+
+                {auth.isAuthenticated && <li className="pointer">
+                    <span onClick={logoutHandler}> Logout
+                    </span>
+                </li>}
             </ul>
         </nav>
     )
