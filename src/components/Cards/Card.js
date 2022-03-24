@@ -1,6 +1,6 @@
 import "./cards.css"
 
-const ProductCard = ({ title, price, imageURL }) => {
+const ProductCard = ({ title, price, imageURL, rating }) => {
     return (
         <div className="ecom-card">
             <div className="product-div">
@@ -10,6 +10,11 @@ const ProductCard = ({ title, price, imageURL }) => {
                 <div className="icon-div">
                     <span className="material-icons">favorite</span>
                 </div>
+            </div>
+            <div className="ratings bg-brown">
+                <span className="text-white text-sm fw-semibold">{rating}</span>
+                <span className="material-icons rated">star_rate</span>
+
             </div>
             <div className="product-details">
                 <div>

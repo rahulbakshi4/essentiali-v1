@@ -39,7 +39,22 @@
     transform: scale(1.075);
     transition: .2s ease-in-out;
   }
-
+  .rated {
+    color: var(--clr-white);   
+    font-size: 12px;
+  }
+  
+  .ratings{
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    max-width: max-content;
+    padding: .125rem .25rem;
+  }
+  .ratings > span {
+    cursor: pointer;
+  }
+  
   @media (min-width: 768px) {
     .product-img {
       width: 15rem;

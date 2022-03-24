@@ -6,16 +6,17 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const categories = [
-  {
-    _id: uuid(),
-    categoryName: "coffee",
-    description: ""
-  },
+
   {
     _id: uuid(),
     categoryName: "breads",
     description:
       ""
+  },
+  {
+    _id: uuid(),
+    categoryName: "coffee",
+    description: ""
   },
   {
     _id: uuid(),
@@ -25,13 +26,14 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "pasta & noodles",
-    description:
-      ""
+    categoryName: "spreads_jam",
+    description: '',
   },
   {
     _id: uuid(),
-    categoryName: "spreads and jam",
-    description: '',
+    categoryName: "pasta_noodles",
+    description:
+      ""
   },
+
 ];
