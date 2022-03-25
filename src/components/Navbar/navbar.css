@@ -45,6 +45,10 @@
     padding: .25rem;
     font-size: 10px;
 }
+  .pointer{
+  cursor:pointer;
+  }
+  
   @media (min-width: 768px) {
     .nav-input {
       order: 0;

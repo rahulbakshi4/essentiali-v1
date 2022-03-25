@@ -4,19 +4,22 @@ const homeProducts = [
         id: uuid(),
         title: "Harvest Atta Bread",
         price: 40,
-        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764518/bread_lue7ny.webp'
+        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764518/bread_lue7ny.webp',
+        rating: "3.8"
     },
     {
         id: uuid(),
-        title: "Kissan Fruit Jam",
-        price: 80,
-        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764719/111643a_oddiix.jpg'
+        title: "Amul Milk Chocolate",
+        price: "100",
+        imageURL: 'https://cdn.grofers.com/app/images/products/sliding_image/114262a.jpg',
+        rating: "4.2"
     },
     {
         id: uuid(),
         title: "Nestle Maggie",
         price: 60,
-        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634765779/169812a_ns9v0s.jpg'
+        imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634765779/169812a_ns9v0s.jpg',
+        rating: "4.9"
     },
 ]
 
