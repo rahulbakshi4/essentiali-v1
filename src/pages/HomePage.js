@@ -1,8 +1,9 @@
 import { ProductCard, HorizontalCard, CategoryCard } from "../components/Cards/Card"
-
+import { useProductList } from "../context/product-context"
 import { Banner } from "../components/Banner/Banner"
-import { homeProducts, homeOffers, categoryProducts } from "../components/Cards/cardData"
+import { homeOffers, categoryProducts } from "../components/Cards/cardData"
 export const HomePage = () => {
+    const { state } = useProductList()
     return (
         <div>
 
@@ -15,8 +16,9 @@ export const HomePage = () => {
 
             <div className="home-cards">
                 {
-                    homeProducts.map(({ title, price, id, imageURL, rating }) => {
-                        return <ProductCard key={id} title={title} price={price} imageURL={imageURL} rating={rating} />
+                    state.products.map(({ title, price, _id, imageURL, rating }, index) => {
+                        if (index <= 2)
+                            return <ProductCard key={_id} _id={_id} title={title} price={price} imageURL={imageURL} rating={rating} />
                     })
                 }
             </div>

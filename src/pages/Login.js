@@ -29,7 +29,7 @@ const Login = () => {
                 <form onSubmit={loginHandler}>
                     <div className="form-content">
                         <div className="label-container">
-                            <label for="email" className="text-brown">
+                            <label htmlFor="email" className="text-brown">
                                 Email
                             </label>
                             <input onChange={(e) => setLoggedIn({ ...loggedIn, email: e.target.value })} type="email" name="email" placeholder="test.js@gmail.com" required />
@@ -38,7 +38,7 @@ const Login = () => {
 
                     <div className="form-content">
                         <div className="label-container">
-                            <label for="password" className="text-brown">
+                            <label htmlFor="password" className="text-brown">
                                 Password
                             </label>
                             <input onChange={(e) => setLoggedIn({ ...loggedIn, password: e.target.value })} type="password" name="password" placeholder="*********" required />

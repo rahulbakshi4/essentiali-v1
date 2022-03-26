@@ -1,4 +1,3 @@
-import { products } from '../../backend/db/products'
 import './productContainer.css'
 import { ProductCard } from './../Cards/Card'
 import { categorisedProducts, priceRangedProducts, ratedProducts, sortedProducts } from '../../utils/filter-functions'
@@ -13,7 +12,7 @@ export const ProductContainer = () => {
     return (
         <section className='product-list'>
             {data.map(({ _id, title, price, imageURL, rating }) => {
-                return <ProductCard key={_id} title={title} price={price} imageURL={imageURL} rating={rating} />
+                return <ProductCard key={_id} _id={_id} title={title} price={price} imageURL={imageURL} rating={rating} />
             })}
         </section>
     )
