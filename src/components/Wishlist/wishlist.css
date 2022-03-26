@@ -1,0 +1,19 @@
+.wishlist-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wishlist-head{
+    padding: 1rem;
+    margin: 1rem auto;
+}
+
+.icon-div:hover{
+   opacity: .7;
+}
+.card-btn-container{
+   padding-left: 1rem;
+}
+.card-btn-container  a{
+   text-decoration: none;
+}

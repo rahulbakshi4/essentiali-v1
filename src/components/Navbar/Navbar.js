@@ -1,8 +1,10 @@
 import './navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/auth-context'
+import { useWishList } from '../../context/wishlist-context'
 export const Navbar = () => {
     const { auth, setAuth } = useAuth()
+    const { wishlist } = useWishList()
     const navigate = useNavigate()
     const logoutHandler = () => {
         setAuth({ token: '', isAuthenticated: false })
@@ -24,8 +26,8 @@ export const Navbar = () => {
                     <span className="number-count">0</span>
                 </li>
                 <li className="nav-icons badge">
-                    <span className="material-icons"><a href="" className="text-white">favorite</a></span>
-                    <span className="number-count">0</span>
+                    <span className="material-icons"><Link to="/wishlist" className="text-white">favorite</Link></span>
+                    {wishlist.wishlistItems.length !== 0 && <span className="number-count">{wishlist.wishlistItems.length}</span>}
                 </li>
                 <li className="nav-icons">
                     <span className="material-icons">person</span>

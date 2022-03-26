@@ -1,6 +1,52 @@
 import "./cards.css"
 
-const ProductCard = ({ title, price, imageURL, rating }) => {
+import { useWishList } from "../../context/wishlist-context"
+import { useState, useEffect } from "react"
+import { addToWishlistService } from "../../services/wishListService"
+import { removeFromWishlistService } from "../../services/wishListService"
+import { useAuth } from "../../context/auth-context"
+import { useNavigate } from "react-router-dom"
+
+const ProductCard = ({ _id, title, price, imageURL, rating }) => {
+    const { auth } = useAuth()
+    const navigate = useNavigate()
+    const { wishlist, setWishlist } = useWishList()
+    const [prodState, setProdState] = useState({
+        inCart: false,
+        inWishlist: false
+    })
+    const product = {
+        _id, title, price, imageURL, rating
+    }
+    useEffect(() => {
+        if (wishlist.wishlistItems) {
+            wishlist.wishlistItems.find((item) => item._id === product._id) &&
+                setProdState({ ...prodState, inWishlist: true })
+        }
+    }, [wishlist.wishlistItems]);
+
+    const addToWishlist = async (product) => {
+        try {
+            const response = await addToWishlistService(product, auth.token)
+            if (response.status === 200 || response.status === 201) {
+                setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
+                setProdState({ ...prodState, inWishlist: true })
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    const removeFromWishlist = async (product) => {
+        const response = await removeFromWishlistService(product._id, auth.token)
+        if (response.status === 200) {
+            setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
+            setProdState({ ...prodState, inWishlist: false })
+        }
+
+    }
+
     return (
         <div className="ecom-card">
             <div className="product-div">
@@ -8,7 +54,8 @@ const ProductCard = ({ title, price, imageURL, rating }) => {
                     src={imageURL}
                     alt="product image" />
                 <div className="icon-div">
-                    <span className="material-icons">favorite</span>
+                    {prodState.inWishlist && <span onClick={() => removeFromWishlist(product)} className="material-icons text-brown">favorite</span>}
+                    {!prodState.inWishlist && <span onClick={() => auth.isAuthenticated ? addToWishlist(product) : navigate("/login")} className="material-icons">favorite</span>}
                 </div>
             </div>
             <div className="ratings bg-brown">
