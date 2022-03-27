@@ -1,0 +1,141 @@
+.cart-main{
+    width: 100%;
+    margin-inline: auto;
+    margin-top: 2rem;
+}
+
+ .cart-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
+
+.cart-details{
+    padding: 2.5rem;
+    background-color: var(--clr-white); 
+    width: 100%; 
+}
+.cart-table{
+    display: flex; 
+    padding-bottom: 2rem;
+    justify-content: space-between; 
+    border-bottom: 1px solid var(--clr-gray); 
+}
+.detail-head,.summary-item{
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.detail-head >*{
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: var(--fw-semibold);
+}
+.detail-head :first-child{
+    width: 40%;
+}
+.detail-head :not(:first-child){
+    width: 20%;
+    text-align: center;
+}
+.cart-row{
+    display: flex; 
+    padding: 1.25rem 1.5rem;
+    align-items: center; 
+    margin-inline: -2rem;
+}
+.cart-row:hover{
+    background-color: var(--clr-gray-light);
+}
+.cart-product{
+    display: flex;
+    width: 40%;
+}
+.cart-img-container{
+    width: 5rem;
+}
+.cart-img{
+    height: 6rem;
+}
+.cart-product-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem; 
+    flex-grow: 1; 
+}
+.btn-remove{
+    padding: 0;
+    background-color:transparent;
+    border: 0;
+}
+.btn-remove:hover{
+    color: var(--clr-failure)
+}
+
+.quantity-section{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    align-items: center;
+}
+.quantity-section>.action-btn{
+    padding: .25rem;
+}
+
+
+.num-width{
+    width: 20%;
+}
+.prev-page{
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    margin-top: 2rem;
+}
+.summary{
+    width: 100%;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(var(--clr-brown),0.3);
+}
+.summary-item{
+  justify-content: space-between;  
+  text-transform: uppercase;
+}
+
+.summary-head{
+    border-bottom: 1px solid var(--clr-gray);
+    padding-bottom: 2rem;
+}
+.summary-cost{
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--clr-gray);
+    text-transform: uppercase;
+}
+
+.btn-checkout{
+    text-transform: uppercase;
+    width: 100%;
+}
+@media (min-width: 800px){
+    .cart-details{
+        width: 65%;
+    }
+    .summary{
+        width: 35%;
+    }
+}
+@media (min-width: 1024px){
+    .cart-details{
+        width: 75%;
+    }
+    .summary{
+        width: 25%;
+    }
+}

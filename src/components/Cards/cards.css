@@ -1,5 +1,10 @@
 .product-details {
     border-top: 1px solid rgba(var(--clr-brown), 0.3);
+    align-items: center;
+  }
+  .remove-cart-btn{
+   padding: .25rem .25rem;
+   margin-top: 1rem;
   }
   .cart-icon {
     background-color: rgb(var(--clr-brown));

@@ -2,9 +2,11 @@ import './navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/auth-context'
 import { useWishList } from '../../context/wishlist-context'
+import { useCart } from '../../context/cart-context'
 export const Navbar = () => {
     const { auth, setAuth } = useAuth()
     const { wishlist } = useWishList()
+    const { cart } = useCart()
     const navigate = useNavigate()
     const logoutHandler = () => {
         setAuth({ token: '', isAuthenticated: false })
@@ -22,8 +24,8 @@ export const Navbar = () => {
             <input className="nav-input" type="text" name="search" placeholder="Search" />
             <ul className="nav-options ">
                 <li className="nav-icons badge">
-                    <span className="material-icons"> <a href="" className="text-white">shopping_cart</a></span>
-                    <span className="number-count">0</span>
+                    <span className="material-icons"> <Link to="/cart" className="text-white">shopping_cart</Link></span>
+                    {cart.cartItems.length !== 0 && <span className="number-count">{cart.cartItems.length}</span>}
                 </li>
                 <li className="nav-icons badge">
                     <span className="material-icons"><Link to="/wishlist" className="text-white">favorite</Link></span>
