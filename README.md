@@ -50,6 +50,12 @@ REACT_APP_JWT_SECRET = secret_key
 - [React](https://github.com/facebook/react)
 - [Mockbee](https://github.com/neogcamp/mockBee)
 
+## Preview
+
+https://user-images.githubusercontent.com/44318721/162236554-1d3ad66e-eec6-4ecf-bd03-d9c73635e312.mp4
+
+
+
 ## Author 
 
 👨‍💻  Rahul Bakshi [(***@rahulbakshi4***)](https://github.com/rahulbakshi4)  
