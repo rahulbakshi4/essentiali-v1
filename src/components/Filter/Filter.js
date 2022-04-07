@@ -65,28 +65,28 @@ const Filter = () => {
                 <ul className="text-sm filter-lists">
                     <li>
                         <label>
-                            <input type="radio" value={4} checked={state.rating === '4' ? true : false} onChange={(e) => dispatch({
+                            <input type="radio" value={4} checked={state.rating === '4'} onChange={(e) => dispatch({
                                 type: RATING, payload: e.target.value
                             })} name="rating" /> 4 Stars & Above
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" value={3} checked={state.rating === '3' ? true : false} onChange={(e) => dispatch({
+                            <input type="radio" value={3} checked={state.rating === '3'} onChange={(e) => dispatch({
                                 type: RATING, payload: e.target.value
                             })} name="rating" /> 3 Stars & Above
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" value={2} checked={state.rating === '2' ? true : false} onChange={(e) => dispatch({
+                            <input type="radio" value={2} checked={state.rating === '2'} onChange={(e) => dispatch({
                                 type: RATING, payload: e.target.value
                             })} name="rating" /> 2 Stars & Above
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="radio" value={1} checked={state.rating === '1' ? true : false} onChange={(e) => dispatch({
+                            <input type="radio" value={1} checked={state.rating === '1'} onChange={(e) => dispatch({
                                 type: RATING, payload: e.target.value
                             })} name="rating" /> 1 Stars & Above
                         </label>

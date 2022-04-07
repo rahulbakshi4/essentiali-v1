@@ -20,7 +20,7 @@ const WishListProvider = ({ children }) => {
                     ...prevItems, wishlistItems: wishlistData, wishlistLoading: false
 
                 }))
-                console.log(wishlist)
+
             }
         })();
 

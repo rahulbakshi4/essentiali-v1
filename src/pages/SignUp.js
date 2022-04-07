@@ -2,17 +2,21 @@ import "./../components/Auth/auth.css"
 import { useState } from "react"
 import { SignUpService } from "../services/authService"
 import { Link, useNavigate } from "react-router-dom"
+import { Alert } from "../components/Alert/Alert"
 export const SignUp = () => {
     const navigate = useNavigate()
     const [signUp, setSignUp] = useState({
         name: "", email: "", password: "", confirmPassword: ""
     })
+    const [error, setError] = useState(false)
     const signUpHandler = async (e) => {
         e.preventDefault()
         const { name, email, password } = signUp
         const token = await SignUpService(name, email, password)
-        if (token) {
+        if (token && signUp.confirmPassword === signUp.password) {
             navigate("/login")
+        } else {
+            setError(true)
         }
     }
     return (
@@ -54,6 +58,7 @@ export const SignUp = () => {
                             <input onChange={(e) => setSignUp({ ...signUp, confirmPassword: e.target.value })} type="password" name="confirmpassword" placeholder="*********" required />
                         </div>
                     </div>
+                    {error && <div className="form-content"><div className="label-container"><Alert message={"Passwords did not match"} variant={'error'} /></div> </div>}
 
                     <div className="form-content">
                         <button type="submit" className="form-btn bg-brown">

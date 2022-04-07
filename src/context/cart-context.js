@@ -20,7 +20,6 @@ const CartProvider = ({ children }) => {
                     ...prevItems, cartItems: cartData, cartLoading: false
 
                 }))
-                console.log(cart)
             }
         })();
 

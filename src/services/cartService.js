@@ -9,7 +9,6 @@ export const getCartService = async (token) => {
         })
 
         if (response.status === 200 || response.status === 201) {
-            console.log(response.data)
             return response.data.cart
         }
 
