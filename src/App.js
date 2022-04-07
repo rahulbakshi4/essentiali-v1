@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Navbar } from "./components/Navbar/Navbar"
 import { HomePage, ProductListing, Login, SignUp, WishList, Cart } from "./pages"
 import Mockman from "mockman-js";
+import { NotFound } from "./pages/NotFound";
 function MockAPI() {
   return (
     <div className="MockAPI">
@@ -21,6 +22,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/mockman" element={<MockAPI />} />
       </Routes>
 

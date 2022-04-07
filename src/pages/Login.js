@@ -3,12 +3,15 @@ import { useState } from "react"
 import { LoginService } from "../services/authService"
 import { useAuth } from "../context/auth-context"
 import { Link, useNavigate } from "react-router-dom"
+import { Alert } from "../components/Alert/Alert"
+
 const Login = () => {
     const { auth, setAuth } = useAuth()
     const navigate = useNavigate()
     const [loggedIn, setLoggedIn] = useState({
         email: '', password: ''
     })
+    const [error, setError] = useState(false)
     const loginHandler = async (e) => {
         e.preventDefault()
         const data = await LoginService(loggedIn.email, loggedIn.password)
@@ -19,8 +22,9 @@ const Login = () => {
             setAuth({ ...auth, token: data.encodedToken, isAuthenticated: true })
             navigate("/")
         }
-
-
+        else {
+            setError(true)
+        }
     }
     return (
         <main>
@@ -32,7 +36,7 @@ const Login = () => {
                             <label htmlFor="email" className="text-brown">
                                 Email
                             </label>
-                            <input onChange={(e) => setLoggedIn({ ...loggedIn, email: e.target.value })} type="email" name="email" placeholder="test.js@gmail.com" required />
+                            <input onChange={(e) => setLoggedIn({ ...loggedIn, email: e.target.value })} value={loggedIn.email} type="email" name="email" placeholder="test.js@gmail.com" required />
                         </div>
                     </div>
 
@@ -41,19 +45,27 @@ const Login = () => {
                             <label htmlFor="password" className="text-brown">
                                 Password
                             </label>
-                            <input onChange={(e) => setLoggedIn({ ...loggedIn, password: e.target.value })} type="password" name="password" placeholder="*********" required />
+                            <input onChange={(e) => setLoggedIn({ ...loggedIn, password: e.target.value })} value={loggedIn.password} type="password" name="password" placeholder="*********" required ></input>
                         </div>
                     </div>
-
+                    {error && <div className="form-content">
+                        <div className="label-container">
+                            <Alert message={"Invalid Email or Password"} variant={'error'} />
+                        </div>
+                    </div>}
                     <div className="form-content">
                         <button type="submit" className="form-btn bg-brown">
                             Login
                         </button>
                     </div>
-
+                    <div className="form-content">
+                        <button onClick={() => setLoggedIn({ email: "test.js@gmail.com", password: "test123" })}
+                            type="submit" className="form-btn bg-brown">
+                            Login as Test User
+                        </button>
+                    </div>
                 </form>
                 <div className="form-actions">
-                    <p className="text-center text-brown"><a className="text-brown" href="">Forgot Password</a></p>
                     <p className="text-center text-brown">Need an account? <Link to="/signup" className="text-brown" >Sign Up Here</Link> </p>
                 </div>
             </div>

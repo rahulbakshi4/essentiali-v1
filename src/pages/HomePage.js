@@ -28,8 +28,8 @@ export const HomePage = () => {
                 </h3>
             </div>
             <div className="home-cards">
-                {categoryProducts.map((img, index) => {
-                    return <CategoryCard key={index} img={img} />
+                {categoryProducts.map(({ img, name }) => {
+                    return <CategoryCard key={name} img={img} name={name} />
                 })}
             </div>
 
@@ -41,7 +41,7 @@ export const HomePage = () => {
             <div className="home-cards">
                 {
                     homeOffers.map((product) => {
-                        return <HorizontalCard key={product.id} offer={product.offer} item={product.item} img={product.img} />
+                        return <HorizontalCard key={product.id} offer={product.offer} item={product.item} img={product.img} name={product.name} />
                     })
                 }
 

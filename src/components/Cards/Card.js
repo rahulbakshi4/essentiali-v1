@@ -6,6 +6,7 @@ import { addToWishlistService } from "../../services/wishListService"
 import { removeFromWishlistService } from "../../services/wishListService"
 import { useAuth } from "../../context/auth-context"
 import { useCart } from "../../context/cart-context"
+import { useProductList } from "../../context/product-context"
 import { useNavigate } from "react-router-dom"
 import { addToCartService } from "../../services/cartService"
 
@@ -24,7 +25,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         if (wishlist.wishlistItems) {
             wishlist.wishlistItems.find((item) => item._id === product._id) &&
                 setInWishlist(true)
-            console.log(inWishlist)
+
         }
     }, [wishlist.wishlistItems]);
 
@@ -108,14 +109,20 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         </div>
     )
 }
-const HorizontalCard = ({ offer, item, img }) => {
+const HorizontalCard = ({ offer, item, img, name }) => {
+    const navigate = useNavigate()
+    const { dispatch } = useProductList()
+    const offerClickHandler = () => {
+        dispatch({ type: name })
+        navigate("/products")
+    }
     return (
         <div className="card h-card">
             <div>
-                <a href="">
-                    <img className="h-card-img"
-                        src={img}
-                        alt="product image for bakery items" /></a>
+
+                <img className="h-card-img"
+                    src={img}
+                    alt="product image for bakery items" />
             </div>
 
             <div className="h-card-content">
@@ -124,15 +131,23 @@ const HorizontalCard = ({ offer, item, img }) => {
                     <h3>{item}</h3>
                 </div>
                 <div className="card-btn-container">
-                    <button className="btn bg-brown"><a href="" className="text-white">Shop now</a></button>
+                    <button className="btn bg-brown" onClick={() => offerClickHandler()}>Shop now</button>
                 </div>
             </div>
         </div>
     )
 }
-const CategoryCard = ({ img }) => {
+const CategoryCard = ({ img, name }) => {
+    const navigate = useNavigate()
+    const { dispatch } = useProductList()
+    const categoryClickHandler = () => {
+        dispatch({ type: name })
+        navigate("/products")
+    }
     return (<div className="cg-card">
-        <img className="h-card-img" src={img} alt="product category image" />
+        <img onClick={() =>
+            categoryClickHandler()
+        } className="h-card-img" src={img} alt="product category image" />
     </div>
     )
 }

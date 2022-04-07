@@ -5,9 +5,9 @@ import { useProductList } from '../../context/product-context'
 export const ProductContainer = () => {
     const { state, dispatch } = useProductList()
     const ratedData = ratedProducts(state.products, state.rating)
-    const pricedRangedData = priceRangedProducts(ratedData, state.priceValue)
-    const categorisedData = categorisedProducts(pricedRangedData, state.categories)
-    const data = sortedProducts(categorisedData, state.sortBy)
+    const categorisedData = categorisedProducts(ratedData, state.categories)
+    const pricedRangedData = priceRangedProducts(categorisedData, state.priceValue)
+    const data = sortedProducts(pricedRangedData, state.sortBy)
 
     return (
         <section className='product-list'>
