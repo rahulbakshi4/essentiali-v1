@@ -2,12 +2,13 @@ import "./../components/Auth/auth.css"
 import { useState } from "react"
 import { LoginService } from "../services/authService"
 import { useAuth } from "../context/auth-context"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Alert } from "../components/Alert/Alert"
 
 const Login = () => {
     const { auth, setAuth } = useAuth()
     const navigate = useNavigate()
+    const location = useLocation()
     const [loggedIn, setLoggedIn] = useState({
         email: '', password: ''
     })
@@ -20,7 +21,7 @@ const Login = () => {
             localStorage.setItem("isAuthenticated", true)
             localStorage.setItem("userName", data.foundUser.name)
             setAuth({ ...auth, token: data.encodedToken, isAuthenticated: true })
-            navigate("/")
+            navigate(location.state?.from?.pathname || '/products', { replace: true })
         }
         else {
             setError(true)
