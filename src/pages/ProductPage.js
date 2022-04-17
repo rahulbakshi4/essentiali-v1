@@ -44,7 +44,6 @@ export const ProductPage = () => {
                     <h1 className="text-xl">{product.title}</h1>
 
                     <div className="product-content">
-
                         <p>
                             MRP:
                             <span className="text-bold text-xl"> ₹ {product.price}</span>
