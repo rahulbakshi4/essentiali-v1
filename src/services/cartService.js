@@ -2,7 +2,7 @@ import axios from "axios"
 export const getCartService = async (token) => {
 
     try {
-        const response = await axios.get('api/user/cart', {
+        const response = await axios.get('/api/user/cart', {
             headers: {
                 authorization: token
             }

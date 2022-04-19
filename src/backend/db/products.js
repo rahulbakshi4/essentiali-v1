@@ -35,6 +35,7 @@ export const products = [
   {
     _id: 'ad039b39-2fa3-4c76-a289-06a29adb87bd',
     title: "Kissan Jam",
+    description: "Kissan Mixed Fruit Jam is made with 100% real fruit ingredients, easy to use and can be enjoyed on the go every morning. Enjoy it best with Bread, Roti, Paratha or Dosa for a wholesome breakfast. Turns boring breakfast into an empty plate",
     imageURL: 'https://res.cloudinary.com/rahulb4/image/upload/v1634764719/111643a_oddiix.jpg',
     price: "80",
     categoryName: "spreads_jam",
