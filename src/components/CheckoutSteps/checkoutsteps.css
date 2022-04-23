@@ -1,0 +1,12 @@
+.steps-container{
+    padding: 1rem; 
+    margin-left: 1rem;
+    margin-right: 1rem; 
+}
+.step-items{
+    display: flex;
+    align-items: center; 
+}
+.steps-wrapper{
+    padding: 1rem;
+}

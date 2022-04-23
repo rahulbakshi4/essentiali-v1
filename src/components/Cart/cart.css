@@ -23,6 +23,10 @@
     justify-content: space-between; 
     border-bottom: 1px solid var(--clr-gray); 
 }
+.address-details{
+    padding: 2rem .25rem;
+    border-bottom: 1px solid var(--clr-gray); 
+}
 .detail-head,.summary-item{
     display: flex;
     margin-top: 2rem;
@@ -46,6 +50,9 @@
     padding: 1.25rem 1.5rem;
     align-items: center; 
     margin-inline: -2rem;
+}
+.item-gap{
+    gap: 8rem;
 }
 .cart-row:hover{
     background-color: var(--clr-gray-light);

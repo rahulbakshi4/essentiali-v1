@@ -11,7 +11,12 @@ const CartProvider = ({ children }) => {
         cartLoading: '',
         cartError: ''
     })
-
+    const [shippingAddress, setShippingAddress] = useState({
+        address: "",
+        city: "",
+        postalCode: "",
+        country: ""
+    })
     useEffect(() => {
         (async () => {
             if (auth.isAuthenticated) {
@@ -37,7 +42,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, shippingAddress, setShippingAddress }}>
             {children}
         </CartContext.Provider>
     )

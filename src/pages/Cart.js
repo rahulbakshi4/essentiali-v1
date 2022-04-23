@@ -1,9 +1,10 @@
 import "../../src/components/Cart/cart.css"
 import { CartRow } from "../components/Cart/CartRow"
 import { useCart } from "../context/cart-context"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 const Cart = () => {
     const { cart } = useCart()
+    const navigate = useNavigate()
     return (
         <main>
             <div className="cart-main">
@@ -43,7 +44,7 @@ const Cart = () => {
                             <span>Total cost</span>
                             <span>&#8377;{cart.cartItems.reduce((acc, item) => acc + item.qty * Number(item.price), 0)}</span>
                         </div>
-                        <button className="btn btn-checkout bg-brown text-white fw-semibold text-sm">
+                        <button onClick={() => cart?.cartItems?.length > 0 && navigate("/shipping")} className="btn btn-checkout bg-brown text-white fw-semibold text-sm">
                             Checkout
                         </button>
                     </div>
