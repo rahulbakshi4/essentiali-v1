@@ -1,0 +1,46 @@
+.active-line{
+    border-top: 2px solid rgb(var(--clr-brown));
+}
+.line{
+    flex: 1 1 auto; 
+}
+.disabled-line{
+    border-top: 2px solid var(--clr-gray);
+}
+
+.svg-container{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.svg-item{
+padding-top: 0.75rem;
+padding-bottom: 0.75rem; 
+transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+transition-duration: 500ms; 
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+width: 3rem; 
+height: 3rem; 
+border-radius: 9999px; 
+border: 2px solid rgb(var(--clr-brown));
+}
+.svg-title{
+    position: absolute; 
+top: 0; 
+margin-top: 4rem; 
+margin-left: -2.5rem; 
+font-size: 0.75rem;
+line-height: 1rem; 
+font-weight: 500; 
+text-align: center; 
+text-transform: uppercase; 
+width: 8rem; 
+
+}
+.text-gray-dark{
+    color: var(--clr-gray-dark)
+}
+.disabled-border{
+    border: 2px solid var(--clr-gray);
+}

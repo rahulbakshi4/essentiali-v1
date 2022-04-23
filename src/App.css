@@ -8,7 +8,8 @@
   --clr-cream: #ffe4c6;
   --clr-linen: #fff4e8;
   --clr-bg: #fbf5f3;
-  --clr-yellow-tint: ##f5f0e1;
+  --clr-yellow-tint: #f5f0e1;
+  --clr-gray-dark: #6b7280;
 }
 /* reset CSS*/
 * {
