@@ -1,0 +1,9 @@
+.success-container{
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+    align-items: center;
+    gap: 3rem;
+    flex-direction: column;
+    background: url("https://i.gifer.com/6k2.gif");
+}

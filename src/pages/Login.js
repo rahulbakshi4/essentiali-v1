@@ -20,6 +20,7 @@ const Login = () => {
             localStorage.setItem("token", data.encodedToken)
             localStorage.setItem("isAuthenticated", true)
             localStorage.setItem("userName", data.foundUser.name)
+            localStorage.setItem("userEmail", data.foundUser.email)
             setAuth({ ...auth, token: data.encodedToken, isAuthenticated: true })
             navigate(location.state?.from?.pathname || '/products', { replace: true })
         }

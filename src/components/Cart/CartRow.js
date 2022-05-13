@@ -3,17 +3,12 @@ import { removeFromCartService, cartQuantityService } from "../../services/cartS
 import { useCart } from "../../context/cart-context"
 import { useAuth } from "../../context/auth-context"
 const CartRow = ({ _id, title, price, imageURL, qty }) => {
-    const { cart, setCart } = useCart()
+    const { cart, setCart, removeFromCart } = useCart()
     const { auth } = useAuth()
     const product = {
         _id, title, price, imageURL
     }
-    const removeFromCart = async (product) => {
-        const response = await removeFromCartService(product._id, auth.token)
-        if (response.status === 200) {
-            setCart((prevData) => ({ ...prevData, cartItems: response.data.cart }))
-        }
-    }
+
 
     const cartQuantityHandler = async (operation) => {
         let response;
