@@ -8,6 +8,8 @@ import { useAuth } from "../../context/auth-context"
 import { useCart } from "../../context/cart-context"
 import { useProductList } from "../../context/product-context"
 import { useNavigate } from "react-router-dom"
+import { CLEAR } from "../../constants/filterConstant"
+import toast from "react-hot-toast"
 
 
 const ProductCard = ({ _id, title, price, imageURL, rating }) => {
@@ -42,10 +44,12 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
             if (response.status === 200 || response.status === 201) {
                 setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
                 setInWishlist(true)
+                toast.success("Product added to wishlist", { position: "top-right" })
             }
         }
         catch (err) {
             console.log(err)
+            toast.error("Something went wrong", { position: "top-right" })
         }
     }
 
@@ -54,6 +58,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         if (response.status === 200) {
             setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
             setInWishlist(false)
+            toast.success("Product removed from wishlist", { position: "top-right" })
         }
     }
 
@@ -103,6 +108,7 @@ const HorizontalCard = ({ offer, item, img, name }) => {
     const navigate = useNavigate()
     const { dispatch } = useProductList()
     const offerClickHandler = () => {
+        dispatch({ type: CLEAR })
         dispatch({ type: name })
         navigate("/products")
     }
@@ -131,6 +137,7 @@ const CategoryCard = ({ img, name }) => {
     const navigate = useNavigate()
     const { dispatch } = useProductList()
     const categoryClickHandler = () => {
+        dispatch({ type: CLEAR })
         dispatch({ type: name })
         navigate("/products")
     }

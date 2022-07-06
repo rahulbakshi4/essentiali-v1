@@ -2,6 +2,7 @@ import "./cart.css"
 import { removeFromCartService, cartQuantityService } from "../../services/cartService"
 import { useCart } from "../../context/cart-context"
 import { useAuth } from "../../context/auth-context"
+import toast from "react-hot-toast"
 const CartRow = ({ _id, title, price, imageURL, qty }) => {
     const { cart, setCart, removeFromCart } = useCart()
     const { auth } = useAuth()
@@ -38,7 +39,10 @@ const CartRow = ({ _id, title, price, imageURL, qty }) => {
                 </div>
                 <div className="cart-product-name">
                     <span className="text-sm fw-semibold">{title}</span>
-                    <button onClick={() => removeFromCart(product)} className="text-left fw-semibold text-sm btn-remove ">Remove</button>
+                    <button onClick={() => {
+                        removeFromCart(product)
+                        toast.success("Product removed from cart", { position: "top-right" })
+                    }} className="text-left fw-semibold text-sm btn-remove ">Remove</button>
                 </div>
             </div>
             <div className="quantity-section">

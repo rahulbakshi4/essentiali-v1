@@ -4,6 +4,7 @@ import { LoginService } from "../services/authService"
 import { useAuth } from "../context/auth-context"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Alert } from "../components/Alert/Alert"
+import toast from "react-hot-toast"
 
 const Login = () => {
     const { auth, setAuth } = useAuth()
@@ -23,6 +24,7 @@ const Login = () => {
             localStorage.setItem("userEmail", data.foundUser.email)
             setAuth({ ...auth, token: data.encodedToken, isAuthenticated: true })
             navigate(location.state?.from?.pathname || '/products', { replace: true })
+            toast.success('Logged in successfully')
         }
         else {
             setError(true)

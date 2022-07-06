@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { getCartService, addToCartService, removeFromCartService } from '../services/cartService'
 import { useAuth } from './auth-context'
 
@@ -35,10 +36,12 @@ const CartProvider = ({ children }) => {
             const response = await addToCartService(product, auth.token)
             if (response.status === 200 || response.status === 201) {
                 setCart((prevData) => ({ ...prevData, cartItems: response.data.cart }))
+                toast.success("Product added to cart", { position: "top-right" })
             }
         }
         catch (error) {
             console.log("error", error)
+            toast.error("Error adding to cart", { position: "top-right" })
         }
     }
     const removeFromCart = async (product) => {
@@ -51,6 +54,7 @@ const CartProvider = ({ children }) => {
         }
         catch (error) {
             console.log("error", error)
+            toast.error("Error removing from cart", { position: "top-right" })
         }
     }
 
