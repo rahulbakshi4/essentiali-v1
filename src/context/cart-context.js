@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { getCartService, addToCartService } from '../services/cartService'
+import toast from 'react-hot-toast'
+import { getCartService, addToCartService, removeFromCartService } from '../services/cartService'
 import { useAuth } from './auth-context'
 
 const CartContext = createContext()
@@ -35,14 +36,30 @@ const CartProvider = ({ children }) => {
             const response = await addToCartService(product, auth.token)
             if (response.status === 200 || response.status === 201) {
                 setCart((prevData) => ({ ...prevData, cartItems: response.data.cart }))
+                toast.success("Product added to cart", { position: "top-right" })
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.log("error", error)
+            toast.error("Error adding to cart", { position: "top-right" })
+        }
+    }
+    const removeFromCart = async (product) => {
+        console.log("reach")
+        try {
+            const response = await removeFromCartService(product._id, auth.token)
+            if (response.status === 200) {
+                setCart((prevData) => ({ ...prevData, cartItems: response.data.cart }))
+            }
+        }
+        catch (error) {
+            console.log("error", error)
+            toast.error("Error removing from cart", { position: "top-right" })
         }
     }
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, shippingAddress, setShippingAddress }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, shippingAddress, setShippingAddress }}>
             {children}
         </CartContext.Provider>
     )

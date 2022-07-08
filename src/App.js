@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Navbar } from "./components/Navbar/Navbar"
-import { HomePage, ProductListing, Login, SignUp, WishList, Cart, ProductPage, Shipping, PaymentMethod, PlaceOrder } from "./pages"
+import { HomePage, ProductListing, Login, SignUp, WishList, Cart, ProductPage, Shipping, PaymentMethod, PlaceOrder, OrderSuccess, NotFound } from "./pages"
 import Mockman from "mockman-js";
-import { NotFound } from "./pages/NotFound";
+import { Toaster } from 'react-hot-toast';
 function MockAPI() {
   return (
     <div className="MockAPI">
@@ -27,9 +27,10 @@ function App() {
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/payment-method" element={<PaymentMethod />} />
         <Route path="/place-order" element={<PlaceOrder />} />
+        <Route path="/order-success/:id" element={<OrderSuccess />} />
         <Route path="/mockman" element={<MockAPI />} />
       </Routes>
-
+      <Toaster />
     </Router>
   );
 }
