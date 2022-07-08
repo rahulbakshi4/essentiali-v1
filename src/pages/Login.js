@@ -2,12 +2,14 @@ import "./../components/Auth/auth.css"
 import { useState } from "react"
 import { LoginService } from "../services/authService"
 import { useAuth } from "../context/auth-context"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Alert } from "../components/Alert/Alert"
+import toast from "react-hot-toast"
 
 const Login = () => {
     const { auth, setAuth } = useAuth()
     const navigate = useNavigate()
+    const location = useLocation()
     const [loggedIn, setLoggedIn] = useState({
         email: '', password: ''
     })
@@ -19,8 +21,10 @@ const Login = () => {
             localStorage.setItem("token", data.encodedToken)
             localStorage.setItem("isAuthenticated", true)
             localStorage.setItem("userName", data.foundUser.name)
+            localStorage.setItem("userEmail", data.foundUser.email)
             setAuth({ ...auth, token: data.encodedToken, isAuthenticated: true })
-            navigate("/")
+            navigate(location.state?.from?.pathname || '/products', { replace: true })
+            toast.success('Logged in successfully')
         }
         else {
             setError(true)

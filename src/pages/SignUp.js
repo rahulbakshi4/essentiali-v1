@@ -3,6 +3,7 @@ import { useState } from "react"
 import { SignUpService } from "../services/authService"
 import { Link, useNavigate } from "react-router-dom"
 import { Alert } from "../components/Alert/Alert"
+import toast from "react-hot-toast"
 export const SignUp = () => {
     const navigate = useNavigate()
     const [signUp, setSignUp] = useState({
@@ -15,6 +16,7 @@ export const SignUp = () => {
         const token = await SignUpService(name, email, password)
         if (token && signUp.confirmPassword === signUp.password) {
             navigate("/login")
+            toast.success('Signed up successfully')
         } else {
             setError(true)
         }

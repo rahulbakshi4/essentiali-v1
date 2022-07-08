@@ -3,17 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/auth-context'
 import { useWishList } from '../../context/wishlist-context'
 import { useCart } from '../../context/cart-context'
+import toast from 'react-hot-toast'
 export const Navbar = () => {
     const { auth, setAuth } = useAuth()
-    const { wishlist } = useWishList()
-    const { cart } = useCart()
+    const { wishlist, setWishlist } = useWishList()
+    const { cart, setCart } = useCart()
     const navigate = useNavigate()
     const logoutHandler = () => {
         setAuth({ token: '', isAuthenticated: false })
         localStorage.removeItem('token')
         localStorage.removeItem('isAuthenticated')
         localStorage.removeItem('userName')
+        localStorage.removeItem('userAddress')
+        setWishlist({ ...wishlist, wishlistItems: [] })
+        setCart({ ...cart, cartItems: [] })
         navigate("/login")
+        toast.success('Logged out successfully')
     }
 
     return (

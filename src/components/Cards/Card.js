@@ -8,13 +8,15 @@ import { useAuth } from "../../context/auth-context"
 import { useCart } from "../../context/cart-context"
 import { useProductList } from "../../context/product-context"
 import { useNavigate } from "react-router-dom"
-import { addToCartService } from "../../services/cartService"
+import { CLEAR } from "../../constants/filterConstant"
+import toast from "react-hot-toast"
+
 
 const ProductCard = ({ _id, title, price, imageURL, rating }) => {
     const { auth } = useAuth()
     const navigate = useNavigate()
     const { wishlist, setWishlist } = useWishList()
-    const { cart, setCart } = useCart()
+    const { cart, addToCart } = useCart()
 
     const [inWishlist, setInWishlist] = useState(false)
     const [inCart, setInCart] = useState(false)
@@ -42,10 +44,12 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
             if (response.status === 200 || response.status === 201) {
                 setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
                 setInWishlist(true)
+                toast.success("Product added to wishlist", { position: "top-right" })
             }
         }
         catch (err) {
             console.log(err)
+            toast.error("Something went wrong", { position: "top-right" })
         }
     }
 
@@ -54,31 +58,22 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         if (response.status === 200) {
             setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
             setInWishlist(false)
+            toast.success("Product removed from wishlist", { position: "top-right" })
         }
     }
-
-    const addToCart = async (product) => {
-        try {
-            const response = await addToCartService(product, auth.token)
-            if (response.status === 200 || response.status === 201) {
-                setCart((prevData) => ({ ...prevData, cartItems: response.data.cart }))
-                setInCart(true)
-            }
-        } catch (error) {
-            console.log("error")
-        }
-    }
-
 
     return (
         <div className="ecom-card">
             <div className="product-div">
-                <img className="product-img"
+                <img className="product-img" onClick={() =>
+                    navigate(`/product/${_id}`)}
                     src={imageURL}
                     alt="product image" />
                 <div className="icon-div">
                     {inWishlist && <span onClick={() => removeFromWishlist(product)} className="material-icons text-brown">favorite</span>}
-                    {!inWishlist && <span onClick={() => auth.isAuthenticated ? addToWishlist(product) : navigate("/login")} className="material-icons">favorite</span>}
+                    {!inWishlist && <span onClick={() => auth.isAuthenticated ?
+                        addToWishlist(product) : navigate("/login", { state: { from: location } })}
+                        className="material-icons">favorite</span>}
                 </div>
             </div>
             <div className="ratings bg-brown">
@@ -95,7 +90,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
                 </div>
 
                 {!inCart && <div className="cart-icon">
-                    <svg onClick={() => auth.isAuthenticated ? addToCart(product) : navigate("/login")} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                    <svg onClick={() => auth.isAuthenticated ? addToCart(product) : navigate("/login", { state: { from: location } })} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24" stroke="white">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8"
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -113,6 +108,7 @@ const HorizontalCard = ({ offer, item, img, name }) => {
     const navigate = useNavigate()
     const { dispatch } = useProductList()
     const offerClickHandler = () => {
+        dispatch({ type: CLEAR })
         dispatch({ type: name })
         navigate("/products")
     }
@@ -141,6 +137,7 @@ const CategoryCard = ({ img, name }) => {
     const navigate = useNavigate()
     const { dispatch } = useProductList()
     const categoryClickHandler = () => {
+        dispatch({ type: CLEAR })
         dispatch({ type: name })
         navigate("/products")
     }

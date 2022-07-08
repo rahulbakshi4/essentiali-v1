@@ -43,6 +43,7 @@
   .h-card-img:hover{
     transform: scale(1.075);
     transition: .2s ease-in-out;
+    cursor: pointer;
   }
   .rated {
     color: var(--clr-white);   
