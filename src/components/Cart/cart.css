@@ -74,6 +74,9 @@
     margin-left: 1rem; 
     flex-grow: 1; 
 }
+.center-title{
+    justify-content: center;
+}
 .btn-remove{
     padding: 0;
     background-color:transparent;
@@ -103,6 +106,9 @@
     align-items: center;
     gap: .25rem;
     margin-top: 2rem;
+}
+.prev-page:nth-child(2){
+    cursor: pointer;
 }
 .summary{
     width: 100%;

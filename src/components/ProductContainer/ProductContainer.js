@@ -11,6 +11,7 @@ export const ProductContainer = () => {
 
     return (
         <section className='product-list'>
+            {data?.length === 0 && <h1 className='text-center text-large text-brown fw-semibold'>No products found</h1>}
             {data.map(({ _id, title, price, imageURL, rating }) => {
                 return <ProductCard key={_id} _id={_id} title={title} price={price} imageURL={imageURL} rating={rating} />
             })}

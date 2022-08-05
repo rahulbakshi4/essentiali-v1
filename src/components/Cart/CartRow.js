@@ -3,13 +3,12 @@ import { removeFromCartService, cartQuantityService } from "../../services/cartS
 import { useCart } from "../../context/cart-context"
 import { useAuth } from "../../context/auth-context"
 import toast from "react-hot-toast"
-const CartRow = ({ _id, title, price, imageURL, qty }) => {
+const CartRow = ({ _id, title, price, imageURL, qty, orderSuccess }) => {
     const { cart, setCart, removeFromCart } = useCart()
     const { auth } = useAuth()
     const product = {
         _id, title, price, imageURL
     }
-
 
     const cartQuantityHandler = async (operation) => {
         let response;
@@ -37,22 +36,22 @@ const CartRow = ({ _id, title, price, imageURL, qty }) => {
                         src={imageURL}
                         alt="product in the cart image" />
                 </div>
-                <div className="cart-product-name">
+                <div className={`cart-product-name ${orderSuccess && "center-title"}`}>
                     <span className="text-sm fw-semibold">{title}</span>
-                    <button onClick={() => {
+                    {!orderSuccess && <button onClick={() => {
                         removeFromCart(product)
                         toast.success("Product removed from cart", { position: "top-right" })
-                    }} className="text-left fw-semibold text-sm btn-remove ">Remove</button>
+                    }} className="text-left fw-semibold text-sm btn-remove ">Remove</button>}
                 </div>
             </div>
             <div className="quantity-section">
-                <button onClick={() => cartQuantityHandler("decrement")} className="btn action-btn  bg-brown">
+                {!orderSuccess && <button onClick={() => cartQuantityHandler("decrement")} className="btn action-btn  bg-brown">
                     <span className="material-icons md-18">horizontal_rule</span>
-                </button>
+                </button>}
                 <span className="text-center num-width fw-semibold text-sm">{qty}</span>
-                <button onClick={() => cartQuantityHandler("increment")} className="btn action-btn bg-brown">
+                {!orderSuccess && <button onClick={() => cartQuantityHandler("increment")} className="btn action-btn bg-brown">
                     <span className="material-icons md-18 ">add</span>
-                </button>
+                </button>}
             </div>
 
             <span className="text-center num-width fw-semibold text-sm">&#8377;{price}</span>

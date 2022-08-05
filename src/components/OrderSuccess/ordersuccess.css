@@ -7,3 +7,38 @@
     flex-direction: column;
     background: url("https://i.gifer.com/6k2.gif");
 }
+.order-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+}
+.order-details{
+    padding: 2.5rem;
+    width: 100%;
+   
+    background-color: var(--clr-white); 
+    border-radius: .5rem;
+}
+.order-data{
+    display: flex;
+    flex-direction: column;
+}
+.order-data-head{
+    display: flex;
+    justify-content: space-between;
+}
+.show{
+    display: flex
+}
+.hide{
+    display: none
+}
+.list-none{
+    list-style: none;
+}
+.order-col{
+    display: flex;
+    flex-direction: column;
+}
+

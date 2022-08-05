@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/cart-context'
 export const PlaceOrder = () => {
-    const { cart, removeFromCart } = useCart()
+    const { cart, removeFromCart, setOrders } = useCart()
     const navigate = useNavigate()
     const userAddress = localStorage.getItem("userAddress")
     const { address, city, postalCode, country } = JSON.parse(userAddress)
@@ -53,6 +53,8 @@ export const PlaceOrder = () => {
                 'https://res.cloudinary.com/rahulb4/image/upload/v1649335973/Group_3_zmruuj.png',
             handler: function (response) {
                 response.razorpay_payment_id && navigate(`/order-success/${response.razorpay_payment_id}`)
+                localStorage.setItem("orders", JSON.stringify([...cart.cartItems]))
+                localStorage.setItem("totalCost", JSON.stringify(totalCost))
                 clearCart()
             },
             prefill: {

@@ -53,14 +53,26 @@ export const Shipping = () => {
                                 type="text" name="country" placeholder="Enter Your Country" required />
                         </div>
                     </div>
+                    <div className="form-content">
+                        <button onClick={() => setShippingAddress(
+                            {
+                                address: "Street 99",
+                                city: "Jammu",
+                                postalCode: "181800",
+                                country: "India",
 
+                            }
+                        )} type="submit" className="form-btn bg-brown">
+                            USe default address
+                        </button>
+                    </div>
                     <div className="form-content">
                         <button type="submit" className="form-btn bg-brown">
                             Submit
                         </button>
                     </div>
-
                 </form>
+
             </div>
         </div>
 

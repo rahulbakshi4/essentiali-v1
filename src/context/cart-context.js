@@ -18,6 +18,7 @@ const CartProvider = ({ children }) => {
         postalCode: "",
         country: ""
     })
+    const [orders, setOrders] = useState([])
     useEffect(() => {
         (async () => {
             if (auth.isAuthenticated) {
@@ -45,7 +46,6 @@ const CartProvider = ({ children }) => {
         }
     }
     const removeFromCart = async (product) => {
-        console.log("reach")
         try {
             const response = await removeFromCartService(product._id, auth.token)
             if (response.status === 200) {
@@ -59,7 +59,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, shippingAddress, setShippingAddress }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, shippingAddress, setShippingAddress, orders, setOrders }}>
             {children}
         </CartContext.Provider>
     )
