@@ -34,9 +34,10 @@ export const OrderSuccess = () => {
                         <h1 className="text-xl fw-semibold">Order Details</h1>
                         <div className="order-data-head">
                             <div className="order-data ">
-                                <span className="fw-semibold">Deliver To</span>
+                                <span className="fw-semibold">Deliver To:</span>
                                 <span>{localStorage.getItem('userName')}</span>
-                                <span>{address}, {city}, {postalCode}</span>
+                                <span>{address}</span>
+                                <span>{city}, {postalCode}</span>
                                 <span>{country}</span>
                             </div>
                             <div className="order-data fw-semibold">

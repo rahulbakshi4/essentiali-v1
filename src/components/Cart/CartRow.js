@@ -3,13 +3,14 @@ import { removeFromCartService, cartQuantityService } from "../../services/cartS
 import { useCart } from "../../context/cart-context"
 import { useAuth } from "../../context/auth-context"
 import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 const CartRow = ({ _id, title, price, imageURL, qty, orderSuccess }) => {
     const { cart, setCart, removeFromCart } = useCart()
     const { auth } = useAuth()
     const product = {
         _id, title, price, imageURL
     }
-
+    const navigate = useNavigate()
     const cartQuantityHandler = async (operation) => {
         let response;
         try {
@@ -32,7 +33,7 @@ const CartRow = ({ _id, title, price, imageURL, qty, orderSuccess }) => {
         <div className="cart-row">
             <div className="cart-product">
                 <div className="cart-img-container">
-                    <img className="cart-img"
+                    <img onClick={() => navigate(`/product/${product._id}`)} className="cart-img"
                         src={imageURL}
                         alt="product in the cart image" />
                 </div>

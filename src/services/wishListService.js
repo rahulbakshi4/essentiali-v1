@@ -30,6 +30,7 @@ export const addToWishlistService = async (product, token) => {
 
 
 export const removeFromWishlistService = async (productId, token) => {
+    console.log("productId", productId, token)
     return await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: { authorization: token },
     });

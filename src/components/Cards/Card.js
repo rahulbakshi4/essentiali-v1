@@ -17,9 +17,12 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
     const navigate = useNavigate()
     const { wishlist, setWishlist } = useWishList()
     const { cart, addToCart } = useCart()
-
     const [inWishlist, setInWishlist] = useState(false)
     const [inCart, setInCart] = useState(false)
+    const [clicked, setClicked] = useState({
+        cart: false,
+        wishlist: false
+    })
     const product = {
         _id, title, price, imageURL, rating
     }
@@ -66,6 +69,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         if (!auth.isAuthenticated) {
             navigate('/login', { state: { from: location } })
         }
+        setClicked((prevData) => ({ ...prevData, cart: true }))
         if (inWishlist) {
             addToCart(product)
             removeFromWishlist(product)
@@ -75,7 +79,14 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         }
 
     }
+    const addTowishlistHandler = () => {
+        if (!auth.isAuthenticated) {
+            navigate('/login', { state: { from: location } })
+        }
+        setClicked((prevData) => ({ ...prevData, wishlist: true }))
+        addToWishlist(product)
 
+    }
 
     return (
         <div className="ecom-card">
@@ -86,8 +97,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
                     alt="product image" />
                 <div className="icon-div">
                     {inWishlist && <span onClick={() => removeFromWishlist(product)} className="material-icons text-brown">favorite</span>}
-                    {!inWishlist && <span onClick={() => auth.isAuthenticated ?
-                        addToWishlist(product) : navigate("/login", { state: { from: location } })}
+                    {!inWishlist && <span onClick={() => !clicked.wishlist && addTowishlistHandler()}
                         className="material-icons">favorite</span>}
                 </div>
             </div>
@@ -104,7 +114,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
                     <p className="product-price text-brown">&#8377;{price}</p>
                 </div>
 
-                {!inCart && <div onClick={() => addToCartHandler()} className="cart-icon">
+                {!inCart && <div onClick={() => !clicked.cart && addToCartHandler()} className="cart-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24" stroke="white">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8"

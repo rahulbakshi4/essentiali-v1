@@ -3,7 +3,10 @@
     margin-inline: auto;
     margin-top: 2rem;
 }
-
+.cart-head{
+    padding: 1rem;
+    margin: .5rem auto;
+}
  .cart-container{
     display: flex;
     flex-wrap: wrap;
@@ -66,6 +69,7 @@
 }
 .cart-img{
     height: 6rem;
+    cursor: pointer;
 }
 .cart-product-name{
     display: flex;
@@ -109,6 +113,16 @@
 }
 .prev-page:nth-child(2){
     cursor: pointer;
+}
+.empty-state{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+.empty-state > .btn-container{
+    padding: 1rem;
 }
 .summary{
     width: 100%;

@@ -41,8 +41,7 @@ const CartProvider = ({ children }) => {
             }
         }
         catch (error) {
-            console.log("error", error)
-            toast.error("Error adding to cart", { position: "top-right" })
+            toast.error("User Login Required", { position: "top-right", duration: 800 })
         }
     }
     const removeFromCart = async (product) => {

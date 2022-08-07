@@ -6,7 +6,6 @@ export const LoginService = async (email, password) => {
             email, password
         })
         if (response.status === 200 || response.status === 201) {
-            console.log(response.data)
             return response.data
         }
 

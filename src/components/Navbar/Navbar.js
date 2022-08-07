@@ -15,6 +15,8 @@ export const Navbar = () => {
         localStorage.removeItem('isAuthenticated')
         localStorage.removeItem('userName')
         localStorage.removeItem('userAddress')
+        localStorage.removeItem('orders')
+        localStorage.removeItem('totalCost')
         setWishlist({ ...wishlist, wishlistItems: [] })
         setCart({ ...cart, cartItems: [] })
         navigate("/login")

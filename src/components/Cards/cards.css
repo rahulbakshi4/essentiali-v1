@@ -13,7 +13,7 @@
     padding: 0.5rem !important;
   }
   .icon-div{
-    color: var(--clr-gray-light);
+    color: var(--clr-gray);
   }
   .icon-div:hover{
     color: rgb(var(--clr-brown));

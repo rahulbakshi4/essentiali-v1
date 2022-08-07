@@ -128,7 +128,7 @@ export const PlaceOrder = () => {
                             <span>Total cost</span>
                             <span>&#8377;{totalCost}</span>
                         </div>
-                        <button onClick={() => displayRazorpay()} className="btn btn-checkout bg-brown text-white fw-semibold text-sm">
+                        <button onClick={() => displayRazorpay()} className={`btn btn-checkout text-white fw-semibold text-sm ${totalCost === 0 ? `bg-gray` : `bg-brown`}`} disabled={totalCost === 0}>
                             Place Order
                         </button>
                     </div>

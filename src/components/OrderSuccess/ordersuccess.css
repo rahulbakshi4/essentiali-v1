@@ -11,12 +11,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 2rem;
+    margin: .5rem;
 }
 .order-details{
-    padding: 2.5rem;
-    width: 100%;
-   
+    padding: .5rem;
+    width: 100%; 
     background-color: var(--clr-white); 
     border-radius: .5rem;
 }
@@ -42,3 +41,12 @@
     flex-direction: column;
 }
 
+@media (min-width: 800px){
+    .order-container{
+        margin: 2rem;
+
+    }
+    .order-details{
+        padding: 2rem;
+    }
+}
