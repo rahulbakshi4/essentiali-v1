@@ -15,7 +15,7 @@ import toast from "react-hot-toast"
 const ProductCard = ({ _id, title, price, imageURL, rating }) => {
     const { auth } = useAuth()
     const navigate = useNavigate()
-    const { wishlist, setWishlist } = useWishList()
+    const { wishlist, addToWishlist, removeFromWishlist } = useWishList()
     const { cart, addToCart } = useCart()
     const [inWishlist, setInWishlist] = useState(false)
     const [inCart, setInCart] = useState(false)
@@ -41,42 +41,16 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         }
     }, [cart.cartItems])
 
-    const addToWishlist = async (product) => {
-        try {
-            const response = await addToWishlistService(product, auth.token)
-            if (response.status === 200 || response.status === 201) {
-                setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
-                setInWishlist(true)
-                toast.success("Product added to wishlist", { position: "top-right" })
-            }
-        }
-        catch (err) {
-            console.log(err)
-            toast.error("Something went wrong", { position: "top-right" })
-        }
-    }
 
-    const removeFromWishlist = async (product) => {
-        const response = await removeFromWishlistService(product._id, auth.token)
-        if (response.status === 200) {
-            setWishlist((prevData) => ({ ...prevData, wishlistItems: response.data.wishlist }))
-            setInWishlist(false)
-            toast.success("Product removed from wishlist", { position: "top-right" })
-        }
-    }
+
 
     const addToCartHandler = () => {
         if (!auth.isAuthenticated) {
             navigate('/login', { state: { from: location } })
         }
         setClicked((prevData) => ({ ...prevData, cart: true }))
-        if (inWishlist) {
-            addToCart(product)
-            removeFromWishlist(product)
-        }
-        else {
-            addToCart(product)
-        }
+        addToCart(product)
+
 
     }
     const addTowishlistHandler = () => {
@@ -87,6 +61,11 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
         addToWishlist(product)
 
     }
+    const removeFromWishlistHandler = () => {
+        removeFromWishlist(product)
+        setInWishlist(false)
+        setClicked((prevData) => ({ ...prevData, wishlist: false }))
+    }
 
     return (
         <div className="ecom-card">
@@ -96,7 +75,7 @@ const ProductCard = ({ _id, title, price, imageURL, rating }) => {
                     src={imageURL}
                     alt="product image" />
                 <div className="icon-div">
-                    {inWishlist && <span onClick={() => removeFromWishlist(product)} className="material-icons text-brown">favorite</span>}
+                    {inWishlist && <span onClick={() => removeFromWishlistHandler()} className="material-icons text-brown">favorite</span>}
                     {!inWishlist && <span onClick={() => !clicked.wishlist && addTowishlistHandler()}
                         className="material-icons">favorite</span>}
                 </div>

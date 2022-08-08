@@ -88,6 +88,7 @@ export const PlaceOrder = () => {
                         {cart?.cartItems.map((item, index) => (<div className='cart-row item-gap' key={index}>
                             <div className="cart-img-container">
                                 <img className="cart-img"
+                                    onClick={() => navigate(`/product/${item._id}`)}
                                     src={item.imageURL}
                                     alt="product in the cart image" />
                             </div>

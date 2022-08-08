@@ -8,6 +8,7 @@
     justify-content: space-between;
   }
   .product-img-container {
+    position: relative;
     margin: 1.25rem;
     width: 50%;
     height: auto;
@@ -35,6 +36,9 @@
     line-height: 1.75rem;
     display: flex;
     justify-content: space-between;
+  }
+  .icon-div{
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%)
   }
 
   @media (max-width: 780px){
