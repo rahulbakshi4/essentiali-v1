@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar/Navbar"
 import { HomePage, ProductListing, Login, SignUp, WishList, Cart, ProductPage, Shipping, PaymentMethod, PlaceOrder, OrderSuccess, NotFound } from "./pages"
 import Mockman from "mockman-js";
 import { Toaster } from 'react-hot-toast';
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 function MockAPI() {
   return (
     <div className="MockAPI">
@@ -20,8 +21,8 @@ function App() {
         <Route path='/products' element={<ProductListing />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route path="/wishlist" element={<WishList />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<PrivateRoute><WishList /></PrivateRoute>} />
+        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
         <Route path="*" element={<NotFound />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/shipping" element={<Shipping />} />
